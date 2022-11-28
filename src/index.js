@@ -8,14 +8,14 @@ import Home from "./Home";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <Provider store={store}>
-    <React.StrictMode>
+  <BrowserRouter>
+    <Provider store={store}>
       <App />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-        </Routes>
-      </BrowserRouter>
-    </React.StrictMode>
-  </Provider>
+      <Routes>
+        {/* <React.StrictMode> */}
+        <Route path="/" element={<Home />} />
+        {/* </React.StrictMode> */}
+      </Routes>
+    </Provider>
+  </BrowserRouter>
 );

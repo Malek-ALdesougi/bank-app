@@ -7,15 +7,17 @@ function Header() {
       <nav className="navbar navbar-expand-lg bg-warning text-light">
         <div className="container-fluid">
 
-          {/* <NavLink className="navbar-brand text-light" to="/">
+         <NavLink className="navbar-brand text-light" to="/">
             Bank App
-          </NavLink>
+          </NavLink> 
 
           <NavLink
             className="navbar-item text-light"
             to="/"
-            style={{ textDecoration: "none" }}> Home
-          </NavLink> */}
+            style={{ textDecoration: "none" }}
+          >
+            Home
+          </NavLink>
           <button
             className="navbar-toggler"
             type="button"
