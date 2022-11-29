@@ -4,6 +4,7 @@ const Home = (props) => {
   console.log(props.accounts);
   return (
     <div className="container col-md-8 mt-5">
+      <h1>Total Accounts : {props.numAcc}</h1>
       <table className="table table-border">
         <thead>
           <tr>
@@ -30,10 +31,13 @@ const Home = (props) => {
   );
 };
 
-const importStateFromStoreAsProps = (state) => {
+const mapStateToProps = (state) => {
   return {
     accounts: state.accounts,
+
+    numAcc: state.numberOfAccounts,
+    
   };
 };
 
-export default connect(importStateFromStoreAsProps)(Home);
+export default connect(mapStateToProps)(Home);

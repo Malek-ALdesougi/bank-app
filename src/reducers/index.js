@@ -1,4 +1,5 @@
 
+// const user = {id:8, customerName:'malek', accountNumber:'777777', accountType:'gold'};
 
 const initialState = {
 
@@ -15,45 +16,84 @@ const initialState = {
           accountNumber: "345345",
           accountType: "Student accounts"
         },
-        {
-            id: 3,
-            customerName:"malek Zahran",
-            accountNumber: "de3445",
-            accountType: "empty accounts"
-        },
-        {
-            id: 4,
-            customerName:"mohammed Zahran",
-            accountNumber: "987654",
-            accountType: "nothing accounts"
-        },
-        {
-            id: 5,
-            customerName:"ibrahim Zahran",
-            accountNumber: "3452342",
-            accountType: "empty accounts"
-        },
-        {
-            id: 6,
-            customerName:"Zahran Zahran",
-            accountNumber: "66656767",
-            accountType: "saving accounts"
-        },
-        {
-            id: 7,
-            customerName:"mosis Zahran",
-            accountNumber: "66656767",
-            accountType: "saving accounts"
-        },
-]
 
+    ],
+    
+    numberOfAccounts:2
 
 }
 
 const reducer = (state=initialState, action) => {
 
-    return state;
+    switch(action.type){
+        case 'addUser': 
+        console.log(action);
+        return {
+            ...state, 
+            accounts : [...state.accounts, action.payload],
+        }
+        // case 'IINCREASE' :
+        //     return{
+        //         ...state,
+        //         numberOfAccounts : [...state.numberOfAccounts, state.numberOfAccounts+1]
+        //     }
+
+        default: return state;
+    }
 
 }
 
 export default reducer;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// {
+//     id: 3,
+//     customerName:"malek Zahran",
+//     accountNumber: "de3445",
+//     accountType: "empty accounts"
+// },
+// {
+//     id: 4,
+//     customerName:"mohammed Zahran",
+//     accountNumber: "987654",
+//     accountType: "nothing accounts"
+// },
+// {
+//     id: 5,
+//     customerName:"ibrahim Zahran",
+//     accountNumber: "3452342",
+//     accountType: "empty accounts"
+// },
+// {
+//     id: 6,
+//     customerName:"Zahran Zahran",
+//     accountNumber: "66656767",
+//     accountType: "saving accounts"
+// },
+// {
+//     id: 7,
+//     customerName:"mosis Zahran",
+//     accountNumber: "66656767",
+//     accountType: "saving accounts"
+// },
