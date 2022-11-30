@@ -5,20 +5,22 @@ import {
   MDBRow,
   MDBBtn,
 } from "mdb-react-ui-kit";
-import {connect} from 'react-redux';
+import {useDispatch} from 'react-redux';
 
 
-let newUser = {id:'', customerName: '', accountNumber:'', accountType:''}
-let number = '';
+// let newUser = {id:'', customerName: '', accountNumber:'', accountType:''}
+// let number = 0;
 const Form = (props) => {
 
-    // const [newUser, setNewUser] = useState({
-    //     id : '',
-    //     name: '',
-    //     accountNumber:'',
-    //     accountType: ''
+    const dispatch = useDispatch();
 
-    // });
+    const [newUser, setNewUser] = useState({
+        id : '',
+        customerName: '',
+        accountNumber:'',
+        accountType: ''
+
+    });
 
     // const handleSubmit = (e) => {
     //     e.preventDefault();
@@ -27,10 +29,20 @@ const Form = (props) => {
 
     const handleChange = (e) => {
 
-        newUser =  {...newUser, [e.target.name]: e.target.value}
+         setNewUser({...newUser, [e.target.name]: e.target.value})
     }
 
-    number = props.NumberOfAcc;
+    const addUser = () => {
+      const action = {
+        type:'ADD-USER',
+        payload: newUser
+      }
+      dispatch(action)
+    }
+
+    console.log(newUser);
+
+    // number = props.NumberOfAcc;
 
   return (
     <div className="container mt-5 d-flex justify-content-center">
@@ -47,7 +59,7 @@ const Form = (props) => {
 
         <MDBInput onChange={handleChange} name="accountType" className="mb-4"type="text"id="form3Example4"label="Account type"/>
 
-        <MDBBtn onClick={props.addUser} type="button" className="mb-4 bg-warning text-dark" block>
+        <MDBBtn onClick={addUser} type="button" className="mb-4 bg-warning text-dark" block>
           Add user 
         </MDBBtn>
 
@@ -56,14 +68,14 @@ const Form = (props) => {
   )
 };
 
-const mapDispatchToProps = (dispatch) => {
+// const mapDispatchToProps = (dispatch) => {
       
-    return {
-        addUser: () => dispatch({type:'addUser', payload: newUser}),
-        // increaseAcc: () => dispatch({type:'INCREASE'})
-      }
+//     return {
+//         addUser: () => dispatch({type:'addUser', payload: newUser}),
+//         // increaseAcc: () => dispatch({type:'INCREASE'})
+//       }
       
-}
+// }
 // ---------test another
 // const anotherDispach = (dispatch) => {
       
@@ -73,14 +85,14 @@ const mapDispatchToProps = (dispatch) => {
       
 // }
 
-const mapStateToProps = (state) => {
-    return {
-        accounts: state.accounts,
-        NumberOfAcc: state.numberOfAccounts
-    }
-}
+// const mapStateToProps = (state) => {
+//     return {
+//         accounts: state.accounts,
+//         NumberOfAcc: state.numberOfAccounts
+//     }
+// }
   
  
 
 
-export default connect(mapStateToProps,mapDispatchToProps)(Form);
+export default Form;

@@ -26,17 +26,17 @@ const initialState = {
 const reducer = (state=initialState, action) => {
 
     switch(action.type){
-        case 'addUser': 
-        console.log(action);
+        case 'ADD-USER': 
         return {
             ...state, 
             accounts : [...state.accounts, action.payload],
+            numberOfAccounts: state.numberOfAccounts+1
         }
-        // case 'IINCREASE' :
-        //     return{
-        //         ...state,
-        //         numberOfAccounts : [...state.numberOfAccounts, state.numberOfAccounts+1]
-        //     }
+        case 'DELETE-USER' :
+            let editedAccounts =state.accounts.filter((e) => e.id !== action.payload)
+            return{
+               ...state, accounts: editedAccounts
+            }
 
         default: return state;
     }
