@@ -6,10 +6,9 @@ function Header() {
     <div>
       <nav className="navbar navbar-expand-lg bg-warning text-dark">
         <div className="container-fluid ">
-
-         <NavLink className="navbar-brand text-light" to="/">
+          <NavLink className="navbar-brand text-light" to="/">
             Bank App
-          </NavLink> 
+          </NavLink>
 
           <NavLink
             className="navbar-item text-dark me-4"

@@ -1,99 +1,50 @@
-
-// const user = {id:8, customerName:'malek', accountNumber:'777777', accountType:'gold'};
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+  accounts: [
+    {
+      id: 1,
+      customerName: "malek Zahran",
+      accountNumber: "de3445",
+      accountType: "empty accounts",
+    },
+    {
+      id: 2,
+      customerName: "mohammed Zahran",
+      accountNumber: "987654",
+      accountType: "nothing accounts",
+    },
+  ],
 
-    accounts : [
-        {
-          id: 1,
-          customerName:"Israa Othman",
-          accountNumber: "123456",
-          accountType: "Savings"
-        },
-        {
-          id: 2,
-          customerName:"Ahmad Zahran",
-          accountNumber: "345345",
-          accountType: "Student accounts"
-        },
+  accountsNumber : 2
+};
 
-    ],
-    
-    numberOfAccounts:2
+export const userSlice = createSlice({
+  name: "accounts",
+  initialState,
+  reducers: {
+    addUser: (state, action) => {
+      console.log(action.payload);
+      state.accounts.push(action.payload)
+    },
+    deleteUser: (state, action) => {
+      console.log(action.payload);
+      let newArray = state.accounts.filter((e) => e.id !== action.payload)
+      
+      console.log(newArray);
+      return {
+        ...state, accounts: newArray
+      }
+    },
+    incrementByAmount: (state, action) => {
+      state.value += action.payload;
+    },
+  },
+});
 
-}
+// Action creators are generated for each case reducer function
+export const { addUser, deleteUser } = userSlice.actions;
 
-const reducer = (state=initialState, action) => {
-
-    switch(action.type){
-        case 'ADD-USER': 
-        return {
-            ...state, 
-            accounts : [...state.accounts, action.payload],
-            numberOfAccounts: state.numberOfAccounts+1
-        }
-        case 'DELETE-USER' :
-            let editedAccounts =state.accounts.filter((e) => e.id !== action.payload)
-            return{
-               ...state, accounts: editedAccounts
-            }
-
-        default: return state;
-    }
-
-}
-
-export default reducer;
-
-
-
-
-
+export default userSlice.reducer;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// {
-//     id: 3,
-//     customerName:"malek Zahran",
-//     accountNumber: "de3445",
-//     accountType: "empty accounts"
-// },
-// {
-//     id: 4,
-//     customerName:"mohammed Zahran",
-//     accountNumber: "987654",
-//     accountType: "nothing accounts"
-// },
-// {
-//     id: 5,
-//     customerName:"ibrahim Zahran",
-//     accountNumber: "3452342",
-//     accountType: "empty accounts"
-// },
-// {
-//     id: 6,
-//     customerName:"Zahran Zahran",
-//     accountNumber: "66656767",
-//     accountType: "saving accounts"
-// },
-// {
-//     id: 7,
-//     customerName:"mosis Zahran",
-//     accountNumber: "66656767",
-//     accountType: "saving accounts"
-// },

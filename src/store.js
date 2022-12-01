@@ -1,11 +1,13 @@
-import { createStore } from "redux";
-import reducer from "./reducers";
-
-//we must make initial state
+import { configureStore } from "@reduxjs/toolkit";
+import userReducer from './reducers/index'
 
 
-const store = createStore(reducer);
+const store = configureStore({
 
+    reducer: {
+        user: userReducer,
+    },
 
+})
 
 export default store ;

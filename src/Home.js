@@ -1,12 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
+import {deleteUser} from './reducers'
 
 const Home = () => {
 
   const dispatch = useDispatch();
 
-  const accountData = useSelector((state) => {
-    return state.accounts ;
-  })
+  const accountData = useSelector((state) => state.user.accounts)
 
   console.log(accountData);
 
@@ -31,7 +30,7 @@ const Home = () => {
                   <td>{item.customerName}</td>
                   <td>{item.accountNumber}</td>
                   <td>{item.accountType}</td>
-                  <td><button onClick={() => {dispatch({type: 'DELETE-USER', payload: item.id})}} className="btn btn-danger">Delete</button></td>
+                  <td><button onClick={() => dispatch(deleteUser(item.id))} className="btn btn-danger">Delete</button></td>
                 </tr>
             );
           })}
@@ -41,12 +40,5 @@ const Home = () => {
   );
 };
 
-// const mapStateToProps = (state) => {
-//   return {
-//     accounts: state.accounts,
-//     numAcc: state.numberOfAccounts,
-    
-//   };
-// };
 
 export default Home;
